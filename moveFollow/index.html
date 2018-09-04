@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>沿鼠标轨迹移动</title>
+	<style>
+	img{
+		width: 60px;
+		position: absolute;
+		left: 10px;
+		top: 100px;
+	}
+	</style>
+	<script src="./myjs.js"></script>
+</head>
+<body>
+	
+	<button id="btn1">根据鼠标点击位置移动</button>
+	<button id="btn2">根据鼠标轨迹移动</button>
+	<p>请点击按钮激活功能</p>
+	<img src="./images/1.jpg">
+
+	<script>
+		var oBtn = document.querySelectorAll("button");
+		var desc = document.querySelector("p");
+		var img = document.querySelector("img");
+		var onOff = true;
+		var timer = null;
+
+		oBtn[0].onclick = function(ev){
+			var ev = ev||event;
+			ev.stopPropagation();
+			ev.cancelBubble = true;
+			clearEvent();
+			onOff = true;
+			changeDesc();
+			document.onclick = function(ev){
+				var ev = ev||event;
+				startMove(img,{left:ev.clientX,top:ev.clientY},6);
+				return false;			
+			}
+			return false;
+			
+			
+		}
+		oBtn[1].onclick = function(ev){
+			var ev = ev||event;
+			ev.cancelBubble = true;
+			clearEvent();
+			onOff = false;
+			changeDesc();
+			var arr =[{x:img.offsetLeft,y:img.offsetTop}];
+			document.onmousedown = function(ev){
+				arr.push({x:ev.clientX,y:ev.clientY})
+				document.onmousemove = function(ev){
+					arr.push({x:ev.clientX,y:ev.clientY})
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					var timer = setInterval(function(){
+						if(arr.length == 0){
+							clearInterval(timer);
+							return;
+						}
+						img.style.left =arr[0].x +'px';
+						img.style.top = arr[0].y +'px';
+						arr.shift();
+						
+					},30)
+				
+				}
+				return false;
+			}
+
+		}
+
+		function clearEvent(){
+			document.click = document.onmousedown = document.onmousemove = document.onmouseup = null;
+			for (i = 0; i < oBtn.length; i++){
+				oBtn[i].onmousedown = oBtn[i].onmouseup = function (ev){
+					var ev = ev || event;
+					ev.cancelBubble = true;	
+				};
+			}
+		}
+
+		function changeDesc(){
+			desc.innerHTML = onOff?"鼠标点击页面， 人物将移动至鼠标位置！":"按住鼠标左键，在页面滑动，人物将按照鼠标轨迹移动";
+			oBtn[0].innerHTML = onOff?"根据鼠标点击位置移动(已激活)":"根据鼠标点击位置移动";
+			oBtn[1].innerHTML = onOff?"根据鼠标轨迹移动":"根据鼠标轨迹移动(已激活)";
+		}
+	</script>
+</body>
+</html>
