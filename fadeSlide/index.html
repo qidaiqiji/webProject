@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淡入淡出轮播图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 590px;
+			height: 250px;
+			margin: 50px auto;
+			border: 15px solid #666;
+			position: relative;
+		}
+		#container img{
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			transition: opacity .5s ease;
+		} 
+		.btnList{
+			position: absolute;
+			bottom: 20px;
+			left: 240px;
+
+		}
+		.btnList a{
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background:#fff;
+			opacity: .7;
+			margin-left: 8px;
+		}
+		.btnList .active{
+			background: orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img src="./images/img1.jpg">
+		<img src="./images/img2.jpg">
+		<img src="./images/img3.jpg">
+		<img src="./images/img4.jpg">
+		<img src="./images/img5.jpg">
+		<img src="./images/img6.jpg">
+		<div class="btnList">
+		</div>
+	</div>
+	<script>
+		var container = document.querySelector("#container");
+		var btnList = document.querySelector(".btnList");
+		var imgList = document.querySelectorAll("#container img");
+		var len = imgList.length;
+		var str = "";
+		var num = 0;
+		var timer = null;
+
+		function createBtn(){
+			for(var i=0;i<len;i++){
+				str += "<a href='#'></a>";
+			}
+			btnList.innerHTML = str;
+		}
+		createBtn();
+
+		function init(){
+			var btnDots = btnList.querySelectorAll("a");
+			for(var i=0;i<len;i++){
+				btnDots[i].className = "";
+				imgList[i].style.opacity = 0;
+			}
+			btnDots[num].className = "active";
+			imgList[num].style.opacity = 1;
+		}
+
+		init();
+
+		timer = setInterval(autoPlay,2000)
+
+		function autoPlay(){
+			num++;
+			if(num == len){
+				num = 0;
+			}
+			init();
+		}
+
+		var btnDots = btnList.querySelectorAll("a");
+		for(let i=0;i<len;i++){
+			btnDots[i].index = i;
+			btnDots[i].onclick = function(){
+				num = this.index;
+				init();
+			}
+
+		}
+
+		container.onmouseover = function(){
+			clearInterval(timer);
+		};
+		container.onmouseout = function(){
+			timer = setInterval(autoPlay,2000)
+		};
+
+
+
+	</script>
+</body>
+</html>
