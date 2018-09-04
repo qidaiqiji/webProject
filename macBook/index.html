@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制MacBook</title>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<style>
+		.computer{
+			width:600px;
+			height:450px;
+			background: linear-gradient(30deg,rgba(250,250,250,1) 25%,rgba(210,210,210,1));
+			margin:60px auto;
+			border-radius: 3%;
+			box-shadow: 0 5px 6px rgba(0,0,0,.4);
+			position: relative;
+		}
+		.computer:before{
+			content: "";
+			display: block;
+			width: 780px;
+			height: 20px;
+			border-radius:0 0 3px 3px;
+			border-top-left-radius:390px 18px;
+			border-top-right-radius:390px 18px;
+			background: rgb(210,210,210);
+			position:absolute;
+			left:-90px;
+			top:-20px;
+			border-bottom: 2px solid #000;
+			background:linear-gradient(top,rgb(210,210,210) 50%,rgb(225,225,225));
+
+		}
+		.blackBar{
+			width: 450px;
+			height: 20px;
+			position: absolute;
+			background: linear-gradient(to bottom,rgb(30,30,30),rgb(60,60,60) 35%,rgb(100,100,100) 50%,rgb(30,30,30) 65%);
+			left: 50%;
+			margin-left: -225px;
+			top: 0;
+			border-right: 2px solid #fff;
+			border-bottom: 2px solid #fff;
+		}
+		.keyBoard{
+			width:530px;
+			height: 216px;
+			background: rgb(250,250,250);
+			border: 1px solid rgb(180,180,180);
+			border-radius: 8px;
+			position: absolute;
+			left: 50%;
+			margin-left: -265px;
+			top: 35px;
+			box-sizing: border-box;
+		}
+		.menu{
+			width: 100%;
+			padding: 8px 0 0 8px;
+		}
+		.menu li{
+			width: 29px;
+			height: 29px;
+			background: rgb(30,30,30);
+			float: left;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			border-radius: 4px;
+			border: 1px solid rgb(70,70,70);
+			text-align: center;
+			font-size: 12px;
+			line-height: 28px;
+			color: #ccc;
+			box-shadow:1px 0px 0px rgb(0,0,0),0px 1px 0px rgb(0,0,0),-1px 0px 0px rgb(0,0,0),0px -1px 0px rgb(0,0,0);	
+		}
+		.menu li:nth-child(-n+14){
+			width: 30px;
+			height: 15px;
+			line-height: 15px;
+			/*box-shadow: 1px 1px 0 rgba(0,0,0),-1px -1px 0 rgb(0,0,0);*/
+		}
+		.menu li span{
+			display: block;
+			width: 100%;
+			line-height: 14px;
+			text-align: center;
+		}
+		.menu li:nth-child(28),.menu li:nth-child(29){
+			width:45px;
+		}
+		.menu li:nth-child(43),.menu li:nth-child(55){
+			width:55px;
+		}
+		.menu li:nth-child(56),.menu li:nth-child(67){
+			width:73px;
+		}
+		.menu li:nth-child(72){
+			width:223px;
+		}
+
+		.touch{
+			width: 200px;
+			height: 150px;
+			border: 1px solid rgb(190,190,190);
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			margin-left: -100px;
+			border-radius: 12px;
+			box-shadow: inset 1px 1px 0 rgba(0,0,0,.2),inset -1px -1px 0 rgba(0,0,0,.2)
+		}
+
+	</style>
+</head>
+<body>
+	<div class="computer">
+		<div class="blackBar"></div>
+		<div class="keyBoard">
+			<ul class="menu">
+				<li>esc</li>
+				<li>F1</li>
+				<li>F2</li>
+				<li>F3</li>
+				<li>F4</li>
+				<li>F5</li>
+				<li>F6</li>
+				<li>F7</li>
+				<li>F8</li>
+				<li>F9</li>
+				<li>F10</li>
+				<li>F11</li>
+				<li>F12</li>
+				<li></li>
+				<li>
+					<span>~</span>
+					<span>`</span>
+				</li>
+				<li>
+					<span>!</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>@</span>
+					<span>2</span>
+				</li>
+				<li>
+					<span>#</span>
+					<span>3</span>
+				</li>
+				<li>
+					<span>$</span>
+					<span>4</span>
+				</li>
+				<li>
+					<span>%</span>
+					<span>5</span>
+				</li>
+				<li>
+					<span>^</span>
+					<span>6</span>
+				</li>
+				<li>
+					<span>&</span>
+					<span>7</span>
+				</li>
+				<li>
+					<span>*</span>
+					<span>8</span>
+				</li>
+				<li>
+					<span>(</span>
+					<span>9</span>
+				</li>
+				<li>
+					<span>)</span>
+					<span>0</span>
+				</li>
+				<li>
+					<span>—</span>
+					<span>-</span>
+				</li>
+				<li>
+					<span>+</span>
+					<span>=</span>
+				</li>
+				<li>Back</li>
+				<li>Tab</li>
+				<li>Q</li>
+				<li>W</li>
+				<li>E</li>
+				<li>R</li>
+				<li>T</li>
+				<li>Y</li>
+				<li>U</li>
+				<li>I</li>
+				<li>O</li>
+				<li>P</li>
+				<li>
+					<span>{</span>
+					<span>[</span>
+				</li>
+				<li>
+					<span>}</span>
+					<span>]</span>
+				</li>
+				<li>
+					<span>|</span>
+					<span>\</span>
+				</li>
+				<li>CapsLock</li>
+				<li>A</li>
+				<li>S</li>
+				<li>D</li>
+				<li>F</li>
+				<li>G</li>
+				<li>H</li>
+				<li>J</li>
+				<li>K</li>
+				<li>L</li>
+				<li>
+					<span>:</span>
+					<span>;</span>
+				</li>
+				<li>
+					<span>"</span>
+					<span>'</span>
+				</li>
+				<li>Enter</li>
+				<li>Shift</li>
+				<li>Z</li>
+				<li>X</li>
+				<li>C</li>
+				<li>V</li>
+				<li>B</li>
+				<li>N</li>
+				<li>M</li>
+				<li>
+					<span><</span>
+					<span>,</span>
+				</li>
+				<li>
+					<span>></span>
+					<span>.</span>
+				</li>
+				<li>
+					<span>?</span>
+					<span>/</span>
+				</li>
+				<li>Shift</li>
+				<li>Ctrl</li>
+				<li>Fn</li>
+				<li>Mac</li>
+				<li>Alt</li>
+				<li>By Pure CSS</li>
+				<li>Alt</li>
+				<li>Ctrl</li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="touch"></div>
+	</div>
+</body>
+</html>
