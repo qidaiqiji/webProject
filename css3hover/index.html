@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.pic {
+			width: 300px;
+			height: 450px;
+			overflow: hidden;
+			margin-left: 100px;
+			margin-top: 20px;
+			float: left;
+			position: relative;
+		}
+		.pic a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.pic img{
+			width: 300px;
+		}
+		.cover{
+			background: rgba(0,0,0,.6);
+			transform: translateX(-100%);
+			transition: .5s;
+		}
+		.desc,.cover{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.desc{
+			color: #fff;
+			padding: 30px 20px;
+			font-size: 14px;
+			box-sizing: border-box;
+			transform: translateX(-100%);
+			transition: .3s ease; 
+		}
+		.desc h3{
+			text-align: center;
+			height: 60px;
+			line-height: 60px;
+		}
+		.desc p{
+			line-height: 30px;
+		}
+		.pic:hover .cover{
+			transform: translateX(0);
+		}
+		.pic:hover .desc{
+			transform: translateX(0);
+			transition: 1s .1s ease; 
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="pic">
+		<a href="#"><img src="./images/image1.jpg"></a>
+		<div class="cover"></div>
+		<div class="desc">
+			<h3>熊本熊高清壁纸</h3>
+			<p>
+				下载内容:<br>
+				蠢萌蠢萌可爱的网红表情包熊本熊在线官方高清壁纸
+				<br><br>
+				内容介绍:
+				熊本熊是日本熊本县营业部长兼幸福部长、熊本县地方吉祥物<br><br>
+				下载费用:免费
+			</p>
+		</div>
+	</div>
+	<div class="pic">
+		<a href="#"><img src="./images/image2.jpeg"></a>
+		<div class="cover"></div>
+		<div class="desc">
+			<h3>熊本熊高清壁纸</h3>
+			<p>
+				下载内容:<br>
+				蠢萌蠢萌可爱的网红表情包熊本熊在线官方高清壁纸
+				<br><br>
+				内容介绍:
+				熊本熊是日本熊本县营业部长兼幸福部长、熊本县地方吉祥物<br><br>
+				下载费用:免费
+			</p>
+		</div>
+	</div>
+	<div class="pic">
+		<a href="#"><img src="./images/image3.jpeg"></a>
+		<div class="cover"></div>
+		<div class="desc">
+			<h3>熊本熊高清壁纸</h3>
+			<p>
+				下载内容:<br>
+				蠢萌蠢萌可爱的网红表情包熊本熊在线官方高清壁纸
+				<br><br>
+				内容介绍:
+				熊本熊是日本熊本县营业部长兼幸福部长、熊本县地方吉祥物<br><br>
+				下载费用:免费
+			</p>
+		</div>
+	</div>
+</body>
+</html>

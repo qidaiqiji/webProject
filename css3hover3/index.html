@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3实现呼吸灯效果</title>
+	<style>
+		.btn{
+			width: 250px;
+			height: 50px;
+			background: linear-gradient(to bottom,#6CC3FE,#21A1D0);
+			margin: 50px auto;
+			line-height: 50px;
+			font-size: 30px;
+			text-align: center;
+			border-radius: 5px;
+			color: #fff;
+			animation: loading 3s ease-in-out infinite alternate;
+			border: 1px solid #2B92D4;
+			
+		}
+
+		@keyframes loading{
+			from{
+				opacity: .2;
+				box-shadow: none;
+				
+			}
+			to{
+				opacity: 1;
+				box-shadow: 0 0 30px rgba(0,0,255,.8);
+				border: 1px solid rgba(0,255,255,1);
+			}
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="btn">Loading</div>
+</body>
+</html>

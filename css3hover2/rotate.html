@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移入翻转</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.pic{
+			width: 315px;
+			height: 280px;
+			border: 8px solid #fff;
+			box-shadow: 0 0 4px rgba(0,0,0,.4);
+			float: left;
+			margin-top: 30px;
+			margin-left: 50px;
+			overflow: hidden;
+		}
+		.pic img{
+			display: block;
+			width: 100%;
+			height: 280px;
+			float: left;
+		}
+		.cover{
+			width: 100%;
+			height: 560px;
+			transform-origin: 50% 50%;
+			transition: .5s;
+		}
+		.desc{
+			width: 100%;
+			height: 280px;
+			background: #000;
+			color: #fff;
+			font-size: 14px;
+			padding: 20px;
+			box-sizing: border-box;
+			transform: rotate(180deg);
+			float: left;
+
+		}
+		.desc p{
+			line-height: 20px;
+		}
+		.pic:hover .cover{
+			transform: rotate(180deg);
+
+		}
+	</style>
+</head>
+<body>
+	<div class="pic">
+		<div class="cover">
+			<img src="./images/1.jpg">
+			<div class="desc">
+				<p>在我的怀里 在你的眼里；那里春风沉醉 那里绿草如茵,
+					月光把爱恋 洒满了湖面；两个人的篝火 照亮整个夜晚,多少年以后 如云般游走；那变换的脚步 让我们难牵手,这一生一世 有多少你我；被吞没在月光如水的夜里,多想某一天 往日又重现；我们流连忘返 在贝加尔湖畔,多少年以后 往事随云走；那纷飞的冰雪容不下那温柔,这一生一世 这时间太少；不够证明融化冰雪的深情
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="pic">
+		<div class="cover">
+			<img src="./images/2.jpg">
+			<div class="desc">
+				<p>在我的怀里 在你的眼里；那里春风沉醉 那里绿草如茵,
+					月光把爱恋 洒满了湖面；两个人的篝火 照亮整个夜晚,多少年以后 如云般游走；那变换的脚步 让我们难牵手,这一生一世 有多少你我；被吞没在月光如水的夜里,多想某一天 往日又重现；我们流连忘返 在贝加尔湖畔,多少年以后 往事随云走；那纷飞的冰雪容不下那温柔,这一生一世 这时间太少；不够证明融化冰雪的深情
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="pic">
+		<div class="cover">
+			<img src="./images/3.jpg">
+			<div class="desc">
+				<p>在我的怀里 在你的眼里；那里春风沉醉 那里绿草如茵,
+					月光把爱恋 洒满了湖面；两个人的篝火 照亮整个夜晚,多少年以后 如云般游走；那变换的脚步 让我们难牵手,这一生一世 有多少你我；被吞没在月光如水的夜里,多想某一天 往日又重现；我们流连忘返 在贝加尔湖畔,多少年以后 往事随云走；那纷飞的冰雪容不下那温柔,这一生一世 这时间太少；不够证明融化冰雪的深情
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
