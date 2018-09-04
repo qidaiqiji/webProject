@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击放大图片</title>
+	<link rel="stylesheet" type="text/css" href="./css/reset.css">
+	<style>
+		#list{
+			width: 1000px;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		#list img{
+			border: none;
+			box-shadow: 2px 2px 5px rgba(0,0,0,.7)
+		}
+		#list li{
+			float: left;
+			margin-top: 10px;
+			margin-left: 40px;
+		}
+
+		.wrap{
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,.7);
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			
+		}
+		.bigPic{
+			width: 650px;
+			height: 406px;
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			margin-left: -350px;
+			border: 10px solid #fff;
+			display: none;
+		}
+		.bigPic img{
+			width: 650px;
+			height: 406px;
+		}
+		.btn{
+			display: inline-block;
+			width: 18px;
+			height: 35px;
+			position: absolute;
+			top: 194px;
+
+		}
+		.prev{
+			background: url(images/dirl.png);
+			left: -50px;
+		}
+		.next{
+			background: url(images/dirr.png);
+			right: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul id="list">	
+			<!-- <li><a href="#"><img src="images/s1.jpg"></a></li>
+			<li><a href="#"><img src="images/s2.jpg"></a></li>
+			<li><a href="#"><img src="images/s3.jpg"></a></li>
+			<li><a href="#"><img src="images/s4.jpg"></a></li>
+			<li><a href="#"><img src="images/s5.jpg"></a></li>
+			<li><a href="#"><img src="images/s6.jpg"></a></li>
+			<li><a href="#"><img src="images/s7.jpg"></a></li>
+			<li><a href="#"><img src="images/s8.jpg"></a></li>
+			<li><a href="#"><img src="images/s9.jpg"></a></li> -->
+		</ul>
+		
+	</div>
+	<div class="wrap"></div>
+	<div class="bigPic">
+		<a href="#" class="prev btn"></a>
+		<a href="#" class="next btn"></a>
+		<img src="">
+	</div>
+	<script>
+		var list = document.querySelector("#list");
+		var wrap = document.querySelector(".wrap");
+		var bigPic = document.querySelector(".bigPic");
+		var wrapImg = bigPic.querySelector("img");
+		var prev = document.querySelector(".prev");
+		var next = document.querySelector(".next");
+
+		var smallPicList = ["images/s1.jpg","images/s2.jpg","images/s3.jpg","images/s4.jpg","images/s5.jpg","images/s6.jpg","images/s7.jpg","images/s8.jpg","images/s9.jpg"]
+		
+		var bigPicList = ["images/big1.jpg","images/big2.jpg","images/big3.jpg","images/big4.jpg","images/big5.jpg","images/big6.jpg","images/big7.jpg","images/big8.jpg","images/big9.jpg"]
+
+		var str = "";
+		var cur = 0;
+
+		// 生成图片列表
+		function init(){
+			for(var i=0;i<smallPicList.length;i++){
+				str += "<li><a href='#'><img src=''></a></li>"
+			}
+			list.innerHTML = str;
+			var imgList = list.querySelectorAll("img");
+			imgList.forEach((item,index)=>{
+				item.src = smallPicList[index];
+			})
+		}
+		init();
+
+		// 点击显示遮罩层及切换图片
+		var imgList = list.querySelectorAll("img");
+		imgList.forEach((item,index)=>{
+			item.onclick = function(){
+				wrap.style.display = bigPic.style.display = "block";
+				wrapImg.src = bigPicList[index];
+				cur = index;
+			}
+		})
+
+		prev.onclick = function(){
+			cur--;
+			// console.log(myIndex);
+			if(cur<0)
+			{
+				cur = imgList.length-1
+			}
+			wrapImg.src = bigPicList[cur];
+		}
+
+		next.onclick = function(){
+			cur ++;
+			if(cur >= imgList.length)
+			{
+				cur = 0;
+			}
+			wrapImg.src = bigPicList[cur];
+		}
+	
+		// 点击其他位置遮罩层消失
+		wrap.onclick = function(){
+			wrap.style.display = bigPic.style.display = "none";
+		}
+
+	</script>
+</body>
+</html>
