@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机生成验证码</title>
+	<style>
+		a{
+			text-decoration: none;
+			color: #fff;
+		}
+		.box{
+			width: 500px;
+			margin: 20px auto;
+		}
+		#text{
+			height: 25px;
+			width: 140px;
+		}
+		#code{
+			display: inline-block;
+			font-family: "Microsoft YaHei";
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			background: #aaa;
+			text-align: center;
+			letter-spacing: 6px;
+			font-weight: bold;
+			padding-left: 7px;
+		}
+		
+		#check{
+			height: 30px;
+			width: 60px;
+			background: #499990;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 6px;
+			color: #fff;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text" id="text"></body>
+		<a href="#" id="code"></a>
+		<input type="button" name="" value="验证" id="check">
+	</div>
+	<script>
+		var text = document.querySelector("#text");
+		var vlicode = document.querySelector("#code");
+		var check = document.querySelector("#check");
+		var code = "";
+
+		var random = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z'];
+		createCode();
+		function createCode(){
+			code = "";
+			for(var i=0;i<4;i++){
+				var index = Math.floor(Math.random()*36);
+				code += random[index];
+			}
+			vlicode.innerHTML = code;
+		}
+		vlicode.onclick = createCode;
+
+		check.onclick = function(){
+			var textValue = text.value.toUpperCase();
+			if(textValue == code){
+				window.location.href = "http://www.baidu.com";
+			}else if(textValue == ""){
+				alert("请输入验证码");
+				text.value = "";
+				createCode();
+			}else if(textValue != code){
+				alert("验证码不正确，请重新输入");
+				text.value = "";
+				createCode();
+			}
+			
+
+		}
+
+		
+
+		
+
+
+	</script>
+</body>
+</html>
