@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 862px;
+			height: 515px;
+			margin: 20px auto;
+			border: 4px solid #000;
+			position: relative;
+		}
+		#topPic{
+			width: 50%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			overflow:hidden;
+		}
+
+		#bar{
+			width: 10px;
+			height: 100%;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 50%;
+		}
+
+	</style>
+	<script>
+		window.onload = function(){
+			var container = document.querySelector(".container");
+
+			var topPic = document.querySelector("#topPic");
+			var bar = document.querySelector("#bar");
+
+			container.onmousemove = function(ev){
+				var ev = ev ||event;
+				var l = ev.clientX - this.offsetLeft;
+				if(l<0){
+					l=0
+				}else if(l >= this.offsetWidth - bar.offsetWidth){
+					l = this.offsetWidth - bar.offsetWidth;
+				}
+
+				topPic.style.width = l+"px";
+				topPic.style.transition = "";
+				bar.style.left = l+"px";
+				bar.style.transition = "";
+				
+			}
+
+			container.onmouseout = function(){
+				topPic.style.width = "50%";
+				topPic.style.transition = "1s";
+				bar.style.left = "50%"
+				bar.style.transition = "1s";
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div id="topPic">
+			<img src="./img/1.jpg">
+		</div>
+		<div id="bottomPic">
+			<img src="./img/2.jpg">
+		</div>
+		<div id="bar"></div>
+	</div>
+	
+</body>
+</html>
