@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星闪烁</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="stars"></div>
+	<script>
+		var stars = document.querySelector("#stars");
+		
+		function createStar(){
+			var starList = document.createElement("div");
+			starList.style.cssText = "width:7px;height:7px;position:relative;overflow:hidden";
+			starList.style.left = Math.floor(document.body.clientWidth*Math.random())+"px";
+			starList.style.top = Math.floor(document.body.clientHeight*Math.random())+"px";
+			stars.appendChild(starList);
+			
+
+			var starImg = document.createElement('img');
+			starImg.style.cssText = "width:49px;height:7px;position:absolute;top:0;";
+				starImg.src = "./images/star.png"
+				starList.appendChild(starImg);
+
+		    starBlink(starImg);
+		}
+
+		for(var i=0;i<30;i++){
+			createStar();
+		}
+
+		function starBlink(ele){
+			
+			var num = Math.floor(Math.random()*7);
+			setInterval(function(){
+				if(num<7){
+					ele.style.left = -num*7+'px';
+		            num++;
+				}else{
+					num = 0;
+				}
+
+			},100)
+			
+		}
+	</script>
+</body>
+</html>
