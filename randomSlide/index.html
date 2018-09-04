@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片随机排序</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.btns{
+			text-align: center;
+		}
+		.btns a{
+			display: inline-block;
+			color: #fff;
+			width: 90px;
+			height: 40px;
+			background: #333;
+			line-height: 40px;
+			text-align: center;
+			box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+			margin-left:30px;
+		}
+		.container{
+			width: 1000px;
+			margin: 30px auto;
+			height: 100%;
+		}
+		#list li{
+			float: left;
+			margin-left: 30px;
+			margin-top: 40px;
+
+		}
+		#list li img{
+			width: 300px;
+		}
+		#list li p{
+			text-align: center;
+			margin-top: 10px;
+			font-size: 14px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="btns">
+			<a href="#" id="normal">顺序</a>
+			<a href="#" id="random">随机</a>
+		</div>
+		<ul id="list">
+			<!-- <li>
+				<img src="./img/1.jpg">
+				<p>描述</p>
+			</li>
+			<li>
+				<img src="./img/2.jpg">
+				<p>描述</p>
+			</li>
+			<li>
+				<img src="./img/3.jpg">
+				<p>描述</p>
+			</li>
+			<li>
+				<img src="./img/4.jpg">
+				<p>描述</p>
+			</li>
+			<li>
+				<img src="./img/5.jpg">
+				<p>描述</p>
+			</li>
+			<li>
+				<img src="./img/6.jpg">
+				<p>描述</p>
+			</li> -->
+		</ul>
+	</div>
+	<script>
+		var normalBtn = document.querySelector("#normal");
+		var randomBtn = document.querySelector("#random");
+
+		var imgBox = document.querySelector("#list");
+
+		var imgArr = ["./img/1.jpg","./img/2.jpg","./img/3.jpg","./img/4.jpg","./img/5.jpg","./img/1.jpg"];
+		var infoArr = ["图片一","图片二","图片三","图片四","图片五","图片六"];
+		var str = "";
+		var len = imgArr.length;
+		var arr = [];
+		var onOff = false;
+
+		function init(){
+			for(let i=0;i<len;i++){
+				str += `<li>
+							<img src="${imgArr[i]}">
+							<p>${infoArr[i]}</p>
+						</li>`;
+				arr.push(i)
+			}
+			imgBox.innerHTML = str;
+		}
+		init();
+// 如果onOff为真，则为顺序,反之为倒序
+		var imgList = imgBox.querySelectorAll("img");
+		var infoList = imgBox.querySelectorAll("p");
+
+		function change(){
+			for(let i=0;i<len;i++){
+				imgList[i].src = imgArr[arr[i]];
+				infoList[i].innerHTML = infoArr[arr[i]];
+			}
+		}
+		normalBtn.onclick = function(){
+			if(onOff){
+				arr.sort((a,b)=>{
+					return a-b;
+				})
+			}else{
+				arr.sort((a,b)=>{
+					return b-a;
+				})
+			}
+			change();
+			onOff = !onOff;
+		}
+		
+// 点击随机按钮时，让图片随机排列
+		randomBtn.onclick = function(){
+			arr.sort((a,b)=>{
+				return Math.random()-0.5;
+			})
+			change();
+		}
+
+		
+
+
+
+
+
+	</script>
+</body>
+</html>
