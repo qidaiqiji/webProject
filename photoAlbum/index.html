@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	#container{
+		margin: 50px auto;
+		height: 400px;
+		border: 20px solid pink;
+		border-radius: 10px;
+		position: relative;
+		overflow: hidden;
+	}
+
+    #container img{
+		width: 300px;
+		height: 400px;
+		display: block;
+		border: 1px solid #000;
+		float: left;
+		position: absolute;
+		left: 0;
+		transition: 0.35s;
+	}
+</style>
+</head>
+<body>
+	<div class="container" id="container">
+		<img src="img/pic1.png">
+		<img src="img/pic2.png">
+		<img src="img/pic3.png">
+		<img src="img/pic4.png">
+		<img src="img/pic5.png">
+		<img src="img/pic6.png">
+	</div>
+<script>
+	var container = document.getElementById('container');
+	var imgs = container.getElementsByTagName('img');
+	var distance = 80;
+	var imgWidth = imgs[0].offsetWidth;
+	var len = imgs.length;
+	container.style.width = imgWidth+(imgs.length-1)*distance+'px';
+	// 设置图片的初始位置
+	function init()
+	{
+		for(var i=1;i<len;i++)
+		{
+			imgs[i].style.left = imgWidth+(i-1)*distance+'px';
+		}
+	}
+	init();
+	// 每次点击的移动的距离
+	for(var i=0;i<imgs.length;i++)
+	{
+		(function(i){
+			imgs[i].onclick = function()
+			{
+				init();
+				for(var j=1;j<=i;j++)
+				{
+					imgs[j].style.left = j*distance+'px';
+				}
+			}
+
+		})(i)
+	}
+</script>
+</body>
+</html>
