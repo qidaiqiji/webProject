@@ -1,0 +1,324 @@
+/*主体内容区域*/
+.container .main{
+	flex: 1;
+	height: 1020px;
+	overflow:hidden;
+}
+
+/*-------------------顶部标题-----------------------------*/
+.main .header{
+	width: 100%;
+	height: 81px;
+	line-height: 80px;
+	display: flex;
+	padding: 0 31px 0 30px;
+	border-bottom: 1px solid #e6e9ec;
+	box-sizing: border-box;
+}
+.main .header h2{
+	flex: 1;
+   font-size: 24px;
+   color: #354052;
+}
+.header .myface{
+   width: 212px;
+}
+
+.header .myface .state{
+	position: relative;
+	width: 46px;
+	height: 46px;
+}
+.header .myface .state a{
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: url(../img/icon.png) 3px -513px no-repeat #fff;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.header .face>a{
+	display: block;
+	width: 11px;
+	height: 7px;
+	background: url(../img/icon.png) -16px -516px no-repeat;
+}
+
+
+/*-----------------内容部分--------------*/
+
+/*-----左侧列表-----*/
+.content{
+	width: 100%;
+	display: flex;
+}
+.friends{
+	width: 400px;
+	border-right: 1px solid #e6e9ec;
+	box-sizing: border-box;
+}
+/*---搜索框---*/
+.friends .search{
+	width: 100%;
+	height: 70px;
+	border: 1px solid #e6e9ec;
+	border-right: none;
+	border-top: none;
+	padding: 15px 0 0 30px;
+	box-sizing: border-box;
+}
+.friends .search .search-text{
+	width: 340px;
+	height: 36px;
+	border: 1px solid #e6e9ec;
+	border-radius: 6px;
+	color: #b5bcc9;
+	box-sizing: border-box;
+	position: relative;
+}
+.friends .search input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 296px;
+	height: 34px;
+	border: none;
+	border-radius: 6px;
+	padding-left:14px;
+	box-sizing: border-box;
+}
+.friends .search a{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 42px;
+	height: 34px;
+	border-radius: 0 6px 6px 0;
+	background: url(../img/icon.png) -24px -527px no-repeat;
+	z-index: 999;
+}
+
+
+/*新的未读消息的样式*/
+.unread .contact .face .name{
+	color: #00aaff;
+}
+.unread .info .name span{
+	display:inline-block;
+	width: 8px;
+	height: 8px;
+	background: #00aaff;
+	border-radius: 50%;
+	margin-right: 7px;
+}
+.unread .contact .message{
+	width: 306px;
+	padding-right: 19px;
+	position: relative;
+}
+.unread .contact .message a{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(to bottom,#2da1f7,#1e94ec);
+    border-radius: 50%;
+    position: absolute;
+    right: -23px;
+    top: 4px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+}
+.unread{
+	position: relative;
+}
+.unread .blue-bar{
+	width: 3px;
+	height: 100%;
+	background: #2399f1;
+	position:absolute;
+	left: 0;
+	top: 0;
+}
+
+.contact .face .name{
+	color: #585d68;
+}
+.contact .face .time{
+	float: right;
+	color: #7f8fa4;
+}
+
+/*-------------y右侧聊天记录信息------------*/
+.content .record{
+	width: 100%;
+	flex: 1;
+	position: relative;
+}
+/*--------------顶部按钮部分------------------*/
+.record .record-head{
+	width: 100%;
+	height: 70px;
+	border-bottom: 1px solid #e6e9ec;
+	padding: 0 20px 0 28px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+}
+.record .record-head .person{
+	width: 100%;
+	height: 100%;
+	flex: 1;
+}
+.record .record-head h3{
+	line-height: 70px;
+	font-size: 18px;
+	color: #585d68;
+	float: left;
+}
+
+.record .record-head .person span{
+	display: inline-block;
+	float: left;
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background: #1bb934;
+	margin-left: 10px;
+	margin-top: 31px;
+}
+.record .record-head .btns-panel{
+	width: 284px;
+	height: 100%;
+	float: right;
+	padding-top: 16px;
+	box-sizing: border-box;
+}
+.record-head .btns-panel .btns{
+    width: 109px;
+    height: 32px;
+    border: 1px solid #ced0da;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 0;
+    background: linear-gradient(to bottom,#ffffff,#f2f4f7);
+    float: left;
+    margin-right: 23px;
+}
+.record-head .btns-panel .btns a{
+	display: inline-block;
+	width: 35px;
+	height: 100%;
+	border-right: 1px solid #ced0da;
+	background: url(../img/icon.png) 0 -555px no-repeat;
+}
+.record-head .btns-panel .btns a:nth-child(2){
+	background-position: -26px -555px;
+}
+.record-head .btns-panel .btns a:nth-child(3){
+	border-right: none;
+	background-position: -52px -555px;
+}
+.record-head .btns-panel .pages{
+	width: 78px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 13px 0 22px;
+	color: #56688a;
+	font-size: 14px;
+	box-sizing: border-box;
+	border-left: 1px solid #f0f1f4;
+	float: left;
+}
+.record-head .btns-panel .page-btn{
+    width: 71px;
+    height: 30px;
+    border: 1px solid #ced0da;
+    border-radius: 4px;
+    float: right;
+    background: linear-gradient(to bottom,#ffffff,#f2f4f7);
+}
+.record-head .btns-panel .page-btn a{
+	width: 35px;
+	height: 100%;
+	float: left;
+	background: url(../img/icon.png) -24px -341px no-repeat;
+
+}
+.record-head .btns-panel .page-btn a:nth-child(1)
+{
+	border-right: 1px solid #ced0da;
+}
+.record-head .btns-panel .page-btn a:nth-child(2)
+{
+	background-position: -55px -341px;
+}
+
+
+/*-------------对话中的图片样式--------------------*/
+
+
+.conversation .face .imgs{
+	margin-top: 14px;
+	font-size: 0;
+	position: relative;
+}
+.conversation .face .imgs img{
+	width: 156px;
+	height: 100px;
+	margin-right: 13px;
+}
+.conversation .face .imgs .watch-more{
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 222px;
+	top: 25px;
+	z-index: 9;
+	background: url(../img/icon.png) -33px -481px no-repeat rgba(255,255,255,.4);
+}
+
+/*-----------右侧最下输入框---------------*/
+
+.record .input-frame{
+	width: 100%;
+	height: 100px;
+	padding: 0 31px 21px 29px;
+	background: #fff;
+	box-sizing: border-box;
+}
+.record .input-frame .input{
+	display: flex;
+}
+
+.record .input-frame .input a{
+	display: block;
+	width: 54px;
+	height: 54px;
+	box-sizing: border-box;
+	border: 1px solid #ced0da;
+	border-radius: 5px 0 0 5px;
+	color: #9fa9ba;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 54px;
+	text-align: center;
+}
+.record .input-frame .input input{
+	flex: 1;
+	height: 54px;
+	border:1px solid #dfe3e9;
+	border-left: none;
+	box-sizing: border-box;
+	padding: 0 19px;
+	font-size: 14px;
+	color: #83868e;
+	border-radius: 0 5px 5px 0;
+}
+
