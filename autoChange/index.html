@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+		}
+		.red{
+			left: 300px;
+			top: 100px;
+			background: red;
+		}
+		.yellow{
+			left: 500px;
+			top: 200px;
+			background: yellow;
+		}
+		.blue{
+			left: 650px;
+			top: 100px;
+			background: blue;
+		}
+
+	</style>
+	<script src="../myjs.js"></script>
+</head>
+<body>
+	<input type="button" name="" id="left" value="←">
+	<input type="button" name="" id="right" value="→">
+	<div class="red"></div>
+	<div class="yellow"></div>
+	<div class="blue"></div>
+	<script>
+		var divs = document.querySelectorAll("div");
+		var toLeft = document.querySelector("#left");
+		var toRight = document.querySelector("#right");
+		var timer = null;
+		var onOff = true;
+		var arr = [];
+		var num = 0;
+		for(let i = 0;i<divs.length;i++){
+			arr.push( [parseFloat(getStyle(divs[i],"left")),parseFloat(getStyle(divs[i],"top"))] );
+		}
+		autoPlay();
+		
+		function autoPlay(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				if(onOff){
+					arr.push(arr[0]);
+					arr.shift();
+					move();
+				}else{
+					arr.unshift(arr[divs.length-1]);
+					arr.pop();
+					move();
+				}
+			},1000)
+		}
+
+		
+		toLeft.onclick = function(){
+			onOff = false;
+			autoPlay()
+			
+		}
+		toRight.onclick = function(){
+			onOff = true;
+			autoPlay()
+		}
+
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+		}
+		function move(){
+			for(let i = 0;i<divs.length;i++){
+				startMove(divs[i],{left:arr[i][0],top:arr[i][1]},10);
+			}
+		}
+
+	</script>
+</body>
+</html>
