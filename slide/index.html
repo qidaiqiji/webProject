@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+body,ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.box{
+	height: 108px;
+	width: 670px;
+	margin: 10px auto;
+	position: relative;
+}
+.btn-left{
+	float: left;
+	width: 68px;
+	height: 68px;
+	background: url(images/btn.jpg) no-repeat -68px -68px;
+	position: absolute;
+	left: -68px;
+	top: 20px;
+	z-index: 2;
+}
+.btn-left:hover{
+	background: url(images/btn.jpg) no-repeat -68px 0;
+}
+.btn-right{
+	float: right;
+	width: 68px;
+	height: 68px;
+	background: url(images/btn.jpg) no-repeat 0 -68px;
+	position: absolute;
+	right: 68px;
+	top: 20px;
+	z-index: 2;
+}
+.btn-right:hover{
+	background: url(images/btn.jpg) no-repeat 0 0;
+}
+#wrap{
+	width: 534px;
+	height: 108px;
+	position: relative;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+}
+#wrap ul{
+	height: 108px;
+	position: absolute;
+}
+
+#wrap ul li{
+	float: left;
+}
+#wrap ul li a{
+	display: inline-block;
+	width: 178px;
+	height: 108px;
+}
+.clear:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<a href="#" class="btn-left"></a>
+		<a href="#" class="btn-right"></a>
+		<div id="wrap">
+			<ul class="clear">
+				<li><a href="#"><img src="images/1.jpg"></a></li>
+				<li><a href="#"><img src="images/2.jpg"></a></li>
+				<li><a href="#"><img src="images/3.jpg"></a></li>
+				<li><a href="#"><img src="images/4.jpg"></a></li>
+			</ul>
+		</div>
+	</div>
+<script>
+	var wrap = document.getElementById('wrap');
+	var list = wrap.getElementsByTagName('ul')[0];
+	var alis = list.getElementsByTagName('li');
+	var prev = document.getElementsByTagName('a')[0];
+	var next = document.getElementsByTagName('a')[1];
+	var pics = list.getElementsByTagName('a');
+	var iSpeed = -3;
+	var timer = null;
+	var onOff = true;
+	var str = list.innerHTML+=list.innerHTML;
+	list.innerHTML = str;
+
+	list.style.width = alis[0].offsetWidth*alis.length+'px';
+
+   startMove();
+   function doMove()
+   {
+   	var l = list.offsetLeft;
+    	list.style.left = l + iSpeed+'px';
+		if(l < -list.offsetWidth/2)
+		{
+			list.style.left = 0;
+		}
+		else if(l>0){
+			list.style.left =-list.offsetWidth/2  +'px';
+
+		}
+   }
+   function stopMove()
+   {
+		clearInterval(timer);
+
+   }
+	function startMove()
+	{
+		timer = setInterval(doMove,30);
+	}
+
+    prev.onmouseover = function()
+    {
+    	iSpeed = -3;
+
+    }
+    next.onmouseover = function()
+    {
+    	iSpeed = 3;
+
+    }
+   for(var i = 0;i<pics.length;i++)
+   {
+   	 pics[i].onmouseover = stopMove;
+     pics[i].onmouseout = startMove;
+   }
+
+
+</script>
+</body>
+</html>
