@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	font-size: 14px;
+}
+.container{
+	padding: 10px 20px;
+	width: 900px;
+}
+#type li{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+}
+#type span,#choice>span{
+	display: inline-block;
+	width: 70px;
+	padding: 0 10px;
+	background: #f3f3f3;
+	text-align: center;
+}
+#type a{
+	display: inline-block;
+	padding: 0 20px;
+	text-align: center;
+	color: #666;
+	margin-left: 10px;
+}
+#choice{
+	width: 900px;
+	height: 40px;
+	line-height: 40px;
+	display: flex;
+	border-bottom: 1px solid #ccc;
+}
+#choice div{
+	flex: 1;
+}
+#choice div span{
+	display: inline-block;
+	font-size: 14px;
+	height: 20px;
+	line-height: 20px;
+	padding: 2px;
+	border: 1px solid blue;
+	margin-left: 20px;
+	float: left;
+	margin-top: 6px;
+}
+#choice div a{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: center;
+	background: blue;
+	color: #fff;
+}
+</style>
+<script src="js/js2.js"></script>
+</head>
+<body>
+	<div class="container">
+		<nav id="choice">
+			<span>你的选择</span>
+			<div>
+				<!-- <span>魅族 <a href="#">X</a></span> -->
+			</div>
+		</nav>
+		<ul id="type">
+			<!-- <li>
+				<span>品牌</span>
+				<a href="#">华为</a>
+				<a href="#">小米</a>
+				<a href="#">魅族</a>
+				<a href="#">乐视</a>
+				<a href="#">诺基亚</a>
+				<a href="#">360</a>
+				<a href="#">Sony</a>
+				<a href="#">htc</a>
+				<a href="#">ViVo</a>
+			</li>
+			<li>
+				<span>品牌</span>
+				<a href="#">华为</a>
+				<a href="#">小米</a>
+				<a href="#">魅族</a>
+				<a href="#">乐视</a>
+				<a href="#">诺基亚</a>
+				<a href="#">360</a>
+				<a href="#">Sony</a>
+				<a href="#">htc</a>
+				<a href="#">ViVo</a>
+			</li> -->
+		</ul>
+	</div>
+</body>
+</html>
