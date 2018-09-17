@@ -1,148 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>Document</title>
-<style>
-body,ul{
-	margin: 0;
-	padding: 0;
-}
-li{
-	list-style: none;
-}
-a{
-	text-decoration: none;
-}
-.box{
-	height: 108px;
-	width: 670px;
-	margin: 10px auto;
-	position: relative;
-}
-.btn-left{
-	float: left;
-	width: 68px;
-	height: 68px;
-	background: url(images/btn.jpg) no-repeat -68px -68px;
-	position: absolute;
-	left: -68px;
-	top: 20px;
-	z-index: 2;
-}
-.btn-left:hover{
-	background: url(images/btn.jpg) no-repeat -68px 0;
-}
-.btn-right{
-	float: right;
-	width: 68px;
-	height: 68px;
-	background: url(images/btn.jpg) no-repeat 0 -68px;
-	position: absolute;
-	right: 68px;
-	top: 20px;
-	z-index: 2;
-}
-.btn-right:hover{
-	background: url(images/btn.jpg) no-repeat 0 0;
-}
-#wrap{
-	width: 534px;
-	height: 108px;
-	position: relative;
-	overflow: hidden;
-	left: 0;
-	top: 0;
-}
-#wrap ul{
-	height: 108px;
-	position: absolute;
-}
-
-#wrap ul li{
-	float: left;
-}
-#wrap ul li a{
-	display: inline-block;
-	width: 178px;
-	height: 108px;
-}
-.clear:after{
-	content: "";
-	display: block;
-	clear: both;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片滚屏效果 - www.miaov.com - 妙味课堂</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js.js">
+</script>
 </head>
 <body>
-	<div class="box">
-		<a href="#" class="btn-left"></a>
-		<a href="#" class="btn-right"></a>
-		<div id="wrap">
-			<ul class="clear">
-				<li><a href="#"><img src="images/1.jpg"></a></li>
-				<li><a href="#"><img src="images/2.jpg"></a></li>
-				<li><a href="#"><img src="images/3.jpg"></a></li>
-				<li><a href="#"><img src="images/4.jpg"></a></li>
-			</ul>
-		</div>
-	</div>
-<script>
-	var wrap = document.getElementById('wrap');
-	var list = wrap.getElementsByTagName('ul')[0];
-	var alis = list.getElementsByTagName('li');
-	var prev = document.getElementsByTagName('a')[0];
-	var next = document.getElementsByTagName('a')[1];
-	var pics = list.getElementsByTagName('a');
-	var iSpeed = -3;
-	var timer = null;
-	var onOff = true;
-	var str = list.innerHTML+=list.innerHTML;
-	list.innerHTML = str;
+<div class="control">
+	<label id="chk_pause"><input type="checkbox" checked="checked">间隔停顿</label>
+	<select id="pause_time">
+		<option value="100">短</option>
+		<option value="1000" selected="selected">中</option>
+		<option value="3000">长</option>
+	</select>
 
-	list.style.width = alis[0].offsetWidth*alis.length+'px';
+	滚动速度：
+	<select id="sel_speed">
+		<option value="2">慢</option>
+		<option value="5">中</option>
+		<option value="10">快</option>
+	</select>
+</div>
 
-   startMove();
-   function doMove()
-   {
-   	var l = list.offsetLeft;
-    	list.style.left = l + iSpeed+'px';
-		if(l < -list.offsetWidth/2)
-		{
-			list.style.left = 0;
-		}
-		else if(l>0){
-			list.style.left =-list.offsetWidth/2  +'px';
-
-		}
-   }
-   function stopMove()
-   {
-		clearInterval(timer);
-
-   }
-	function startMove()
-	{
-		timer = setInterval(doMove,30);
-	}
-
-    prev.onmouseover = function()
-    {
-    	iSpeed = -3;
-
-    }
-    next.onmouseover = function()
-    {
-    	iSpeed = 3;
-
-    }
-   for(var i = 0;i<pics.length;i++)
-   {
-   	 pics[i].onmouseover = stopMove;
-     pics[i].onmouseout = startMove;
-   }
-
-
-</script>
+<div class="roll" id="roll">
+    <a href="javascript:void(0);" class="btn_left"></a>
+    <a href="javascript:void(0);" class="btn_right"></a>
+    <div class="wrap">
+        <ul>
+            <li><a href="http://www.miaov.com/"><img src="images/1.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="images/2.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="images/3.jpg" /></a></li>
+            <li><a href="http://www.miaov.com/"><img src="images/4.jpg" /></a></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
