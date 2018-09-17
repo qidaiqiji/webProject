@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+html{
+	font-family: "Times New Roman";
+}
+.ih_item{
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+}
+a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+}
+.trans{
+	width: 100%;
+	height: 100%;
+	border-width: 15px;
+	border-style: solid;
+	border-color: pink orange orange pink;
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	border-radius: 50%;
+	transition: 1s;
+}
+.img img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.info{
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	width: 270px;
+	height: 270px;
+	text-align: center;
+	padding-top: 60px;
+	box-sizing: border-box;
+	background: #000;
+	border-radius: 50%;
+	opacity: 0;
+	transition: 1s;
+}
+.info h3{
+	font-size: 20px;
+	color: #fff;
+	line-height: 30px;
+	width: 200px;
+	margin: 20px auto;
+	border-bottom: 1px solid #ccc;
+}
+.info p{
+	color: #fff;
+}
+a:hover .info{
+    opacity: 0.8;
+}
+a:hover .trans{
+    transform:rotate(180deg)
+}
+</style>
+</head>
+<body>
+<div class="ih_item">
+	<a href="#">
+		<div class="trans"></div>
+		<div class="img">
+			<img src="img/1.jpg">
+		</div>
+		<div class="info">
+			<h3>HEADING<br>HERE</h3>
+			<p>Description goes here</p>
+	    </div>
+	</a>
+	
+</div>
+</body>
+</html>

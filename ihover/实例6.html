@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+html{
+	font-family: "Times New Roman";
+}
+.ih_item{
+	width: 300px;
+	height: 300px;
+	margin: 50px auto;
+	border-radius: 50%;
+	position: relative;
+	cursor: pointer;
+}
+ 
+.img,.info{
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.img{
+	transition: 0.35s;
+}
+.img:after{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: "";
+	box-shadow: inset 0 0 0 20px rgba(255,255,255,.6);
+	border-radius: 50%;
+}
+.img img{
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	vertical-align: top;
+}
+.info{
+	background: #000;
+	text-align: center;
+	color: #fff;
+	padding-top: 60px;
+	box-sizing: border-box;
+	opacity: 0;
+	pointer-events: none;
+	transform: scale(0.3);
+	transition: 0.35s;
+}
+.info h3{
+    line-height: 30px;
+    width: 200px;
+    margin: 20px auto;
+    border-bottom: 1px solid #fff;
+}
+.ih_item:hover .img{
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+.ih_item:hover .info{
+    transform: scale(1);
+    opacity: 0.8;
+	transition: 0.35s 0.1s;
+}
+
+</style>
+</head>
+<body>
+<div class="ih_item">
+	<div class="img">
+		<img src="img/2.jpg">
+	</div>
+	<div class="info">
+		<h3>HEADING<br>HERE</h3>
+		<p>Description goes here</p>
+    </div>
+</div>
+</body>
+</html>
