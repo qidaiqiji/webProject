@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+*{ margin:0; padding:0;}
+#ul1{ width:660px; position:relative; margin:10px auto;}
+li{ width:200px; height:150px; margin:10px; float:left; list-style:none;}
+</style>
+<script src="myjs.js"></script>
+</head>
+<body>
+<input type="button" name="" value="随机" id="btn">
+<ul id="ul1">
+	<li><img src="photo/s1.jpg" /></li>
+    <li><img src="photo/s2.jpg" /></li>
+    <li><img src="photo/s3.jpg" /></li>
+    <li><img src="photo/s4.jpg" /></li>
+    <li><img src="photo/s5.jpg" /></li>
+    <li><img src="photo/s6.jpg" /></li>
+    <li><img src="photo/s7.jpg" /></li>
+    <li><img src="photo/s1.jpg" /></li>
+    <li><img src="photo/s2.jpg" /></li>
+</ul>
+
+<script>
+
+let list = document.querySelector("#ul1");
+let lis = list.querySelectorAll("li");
+let randomBtn = document.querySelector("#btn");
+let len = lis.length;
+let arrWh = [];
+let izIndex = 2;
+
+// 把元素的浮动布局改为定位布局，以便元素可以拖拽
+for(var i=0;i<len;i++)
+{
+	// 把每一个图片的left和top值存在一个数组中
+	arrWh.push([lis[i].offsetLeft,lis[i].offsetTop]);
+}
+for(var j=0;j<len;j++)
+{
+	lis[j].index = j;
+	lis[j].style.position = "absolute";
+	lis[j].style.left = arrWh[j][0]+"px";
+	lis[j].style.top = arrWh[j][1]+"px";
+	lis[j].style.margin = 0;
+	drag(lis[j]);
+}
+
+// 封装拖拽
+function drag(obj)
+{
+	obj.onmousedown = function(ev)
+	{
+		let disX = ev.clientX - obj.offsetLeft;
+		let disY = ev.clientY - obj.offsetTop;
+		// 每次点击拖动的时候都让当前点击的元素的层级提升
+		obj.style.zIndex = izIndex++;
+
+		document.onmousemove = function(ev)
+		{
+			obj.style.left = ev.clientX - disX+"px";
+			obj.style.top = ev.clientY - disY+"px";
+
+        // 先让所有的边框都去掉，然后如果有最近的li存在，就让这个li的加上border
+            lis.forEach(function(item){
+            	item.style.border = "";
+            })
+
+			let nearLi = closeElem(obj);
+			
+			if(nearLi)
+			{
+				nearLi.style.border = "3px solid pink";
+			}
+			
+		}
+		document.onmouseup = function()
+		{
+			document.onmousemove = null;
+			document.onmouseup = null;
+		// 鼠标抬起的时候交换位置
+			let nearLi = closeElem(obj);
+			let tmp = 0;
+			if (nearLi) {
+				startMove(nearLi , { left:arrWh[obj.index][0] , top:arrWh[obj.index][1] },10);
+				startMove(obj , { left:arrWh[nearLi.index][0] , top:arrWh[nearLi.index][1]},10);
+				nearLi.style.border = "";
+
+			// 移动之后索引值发生了变化，交换移动的两个元素的索引值
+				tmp = obj.index;
+				obj.index = nearLi.index;
+				nearLi.index = tmp;
+				nearLi.style.zIndex = obj.style.zIndex;
+			}
+			else{
+				startMove(obj , {left:arrWh[obj.index][0] , top:arrWh[obj.index][1] },10);
+			}
+		}
+		return false;
+	}
+}
+
+//碰撞检测
+function isCollision(obj1,obj2)
+{
+	let rect1 = obj1.getBoundingClientRect();
+	let rect2 = obj2.getBoundingClientRect();
+	// rect2.bottom > rect1.top    rect2.top>rect1.bottom  rect1.left > rect2.right rect2.left>rect1.right
+
+	if(rect2.bottom < rect1.top || rect2.top>rect1.bottom|| rect1.left > rect2.right || rect2.left>rect1.right)
+	{
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+// 找到最近的碰撞到的元素，获取他的位置
+function closeElem(obj)
+{
+	var value = 999;
+	var index = -1;
+	for(var i=0;i<len;i++)
+	{
+	// 如果碰撞检测的结果返回了true，说明有碰上的元素，并且这个元素不能是这个元素本身
+		if( isCollision(obj,lis[i])&&obj!=lis[i] ){
+			var a = obj.offsetLeft - lis[i].offsetLeft;
+			var b = obj.offsetTop - lis[i].offsetTop;
+			var c = Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+			if(c<value)
+			{
+				value = c;
+				index = i;
+			}
+		}
+	}
+	if(index !=-1 )
+	{
+		return lis[index];
+	}
+	// 在整个循环结束后如果index=-1，说明碰撞检测那里返回了false
+	else{
+		return false;
+	}
+}
+
+// 随机交换位置
+randomBtn.onclick = function()
+{
+	//生成[ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]这个数组
+	var randomArr  = [];
+	for(var i=0;i<len;i++)
+	{
+		randomArr.push(i);
+	}
+// 对数组进行随机排序
+	randomArr.sort(function(a,b)
+	{
+		return Math.random()-0.5;
+	})
+
+// 把之前存好的每一个Li的left和top值随机地赋值给每一个li
+	for(var i=0;i<len;i++)
+	{
+		startMove(lis[i],{ left:arrWh[randomArr[i]][0] , top:arrWh[randomArr[i]][1]},10);
+		// 让每一个li的索引都跟随当前li的的位置一起发生变化
+		lis[i].index = randomArr[i];
+	}
+}
+
+
+</script>
+</body>
+</html>
