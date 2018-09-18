@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		margin: 0 10px;
+		height: 400px;
+		border: 1px solid #000;
+	}
+	.btns{
+		margin: 10px 0 0 10px;
+	}
+	.file{
+		width: 80px;
+		padding: 20px;
+		border: 1px solid transparent;
+		background: #f1f1f1;
+		float: left;
+		margin: 10px;
+		position: relative;
+	}
+	.file span{
+		display: block;
+		line-height:30px;
+		font-size: 16px; 
+	}
+	.fileActive{
+		border-color: #000;
+		background: #fff;
+	}
+	.file i{
+		display: none;
+		position: absolute;
+		left: 1px;
+		top: 1px;
+		width: 16px;
+		height: 16px;
+		border: 1px solid #000;
+	}
+
+    .checked{
+        background: url(img/checked.png);
+    }
+	.fileActive i{
+		display: block;
+	}
+	.selection{
+		position: absolute;
+		border: 1px solid blue;
+		background: blue;
+		opacity: .2;
+	}
+
+</style>
+</head>
+<body>
+	<div class="btns">
+		<input type="button" name="" id="createFlie" value="新建文件夹">
+		<label><input type="checkbox" name="" id="selectAll">全选</label>
+	</div>
+	<div id="box">
+		<!-- <div class="file fileActive">
+			<img src="img/folder-b.png">
+			<span>新建文件夹</span>
+			<i class="checked"></i>
+		</div> -->
+	</div>
+<script>
+(function(){
+	let createFlie = document.querySelector("#createFlie");
+	let container = document.querySelector("#box");
+	let selectAll = document.querySelector('#selectAll');
+	let html = '';
+
+// 点击创建文件夹
+	createFlie.onclick=()=>{
+		let file = document.createElement("div");
+		html = `
+			<img src="img/folder-b.png">
+			<span>新建文件夹</span>
+			<i></i>
+		`;
+		file.innerHTML = html;
+		file.className = "file";
+        box.appendChild(file);
+    // 每次新建文件夹的时候，都不能是全选的状态，所以新建时就把全选的状态改为false
+        selectAll.checked = false;
+	};
+
+// 添加事件：因为file是在点击的时候才创建的，所以在外面无法获取到新创建的file节点，只有在点击的时候才能获取到，所以用事件委托的方式。
+   // console.log(container.querySelectorAll(".file"));  //空的
+
+    container.addEventListener("mouseover",function(ev){
+   	    // console.log(ev.target);
+   	    // 不止在鼠标移入到file这个类上时添加fileActive这个类，在鼠标移入到他的子级身上时也要触发
+   	    let file = null;
+   	    if(ev.target.classList.contains("file"))
+   	    {
+   	    	file = ev.target;
+   	    }
+   	    else if(ev.target.parentNode.classList.contains("file"))
+   	    {
+   	    	file = ev.target.parentNode;
+   	    }
+
+   	    if(file)
+   	    {
+   	    	file.classList.add("fileActive");
+   	    }
+   	   
+    },false);
+    container.addEventListener("mouseout",function(ev){
+   	   let file = null;
+   	    if(ev.target.classList.contains("file"))
+   	    {
+   	    	file = ev.target;
+   	    }
+   	    else if(ev.target.parentNode.classList.contains("file"))
+   	    {
+   	    	file = ev.target.parentNode;
+   	    }
+
+   	    if(file)
+   	    {
+   	    	let checked = file.querySelector("i");
+   	    // 只有当i标签没有checked这个类，也就是没有被选中的时候才移除他的父级身上的fileActive这个类
+   	    	if(!checked.classList.contains("checked"))
+   	    	{
+   	    		file.classList.remove("fileActive");
+   	    	}
+   	    }
+   },false)
+
+    // 文件夹选中
+    container.addEventListener("click",function(ev){
+    	// 如果事件源是i标签
+    	if(ev.target.tagName == "I"){
+    		ev.target.classList.toggle("checked");
+    		setCheckedAll();
+    	}
+
+    },false)
+
+    // 全选和全不选(复选框状态改变用onchange)
+    selectAll.onchange = ()=>{
+        let files = container.querySelectorAll('.file');
+    	files.forEach((item)=>{
+        let checked = item.querySelector("i");
+    		if(selectAll.checked)
+    		{
+    			item.classList.add("fileActive");
+    			checked.classList.add("checked");
+    		}
+    		else{
+    			item.classList.remove("fileActive");
+    			checked.classList.remove("checked");
+            }
+    	})
+    };
+
+    // 判断是否全选
+    function setCheckedAll(){
+    	let fileChecked = document.querySelectorAll(".file>i");
+    	for(var i=0;i<fileChecked.length;i++)
+    	{
+    	// 如果有任意一个i标签不包含checked这个类，说明不是全部的文件夹都被选中的，全选就去掉
+    		if(!fileChecked[i].classList.contains("checked"))
+    		{
+    			selectAll.checked = false;
+    			return;
+    		}
+    	// 如果没有执行if，说明全部都是选中的，全选就勾选上
+    		selectAll.checked = true;
+    	}
+    }
+
+    // 框选效果
+    document.onmousedown = function(ev)
+    {
+    	let selection = document.createElement("div");
+    	selection.className = "selection";
+    	document.body.appendChild(selection);
+    	let startPoint = {
+	    		x:ev.clientX,
+	    		y:ev.clientY
+	    	};
+
+    	document.onmousemove = function(ev)
+	    {
+	    	let nowPoint={
+	    		x:ev.clientX,
+	    		y:ev.clientY
+	    	};
+        let frame = document.querySelector(".selection");
+       
+        frame.style.width = Math.abs(nowPoint.x - startPoint.x) +"px";
+        frame.style.height = Math.abs(nowPoint.y - startPoint.y) +"px";
+
+    // 起点位置和结束位置哪个的坐标值小说明哪个点的值为left值
+        frame.style.left = Math.min(nowPoint.x , startPoint.x) +"px";
+        frame.style.top = Math.min(nowPoint.y , startPoint.y) +"px";
+
+        let files = container.querySelectorAll('.file');
+        files.forEach(function(item){
+          let checked = item.querySelector("i");
+          if(isCollision(item,frame))
+          {
+            item.classList.add("fileActive");
+            checked.classList.add("checked");
+            setCheckedAll();
+          }
+          else{
+            item.classList.remove("fileActive");
+            checked.classList.remove("checked");
+          }
+        })
+	    }
+	    document.onmouseup  = function()
+	    {
+	    	document.onmouseup = document.onmousemove = null;
+	    	document.body.removeChild(selection);
+	    }
+	     return false;
+
+    };
+    //碰撞检测
+
+    function isCollision(obj1,obj2)
+    {
+      let rect = obj1.getBoundingClientRect();
+      let rect2 = obj2.getBoundingClientRect();
+
+      // rect.top > rect2.bottom
+      // rect.bottom < rect2.top
+      // rect2.left > rect.right
+      // rect.left > rect2.right
+      if(rect.top > rect2.bottom ||rect.bottom < rect2.top ||rect2.left > rect.right ||rect.left > rect2.right){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+})()
+</script>
+</body>
+</html>
