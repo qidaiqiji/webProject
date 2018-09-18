@@ -1,0 +1,136 @@
+@import url("css/assets/font.css");
+@import url("css/assets/home.css");
+/* 设置清除浮动的公共样式 */
+.clearFix {
+  *zoom: 1;
+}
+.clearFix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
+.header {
+  width: 100%;
+  background: #fff;
+}
+.header .header-top-wrap {
+  background: #000;
+}
+.header .header-top-wrap .header-top {
+  *zoom: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 42px;
+  line-height: 42px;
+  color: #fff;
+  font-family: "Arial";
+  font-size: 14px;
+}
+.header .header-top-wrap .header-top:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header .header-top-wrap .header-top .top-left-info {
+  width: 400px;
+  float: left;
+}
+.header .header-top-wrap .header-top .top-left-info .mail {
+  display: inline-block;
+  margin-left: 30px;
+  color: #fff;
+}
+.header .header-top-wrap .header-top .top-right-info {
+  float: right;
+  *zoom: 1;
+}
+.header .header-top-wrap .header-top .top-right-info:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header .header-top-wrap .header-top .top-right-info div {
+  float: left;
+}
+.header .header-top-wrap .header-top .top-right-info .icons .icon {
+  display: inline-block;
+  margin-right: 24px;
+  font-size: 16px;
+  color: #565656;
+}
+.header .header-top-wrap .header-top .top-right-info .icons .icon:hover {
+  color: #ff9000;
+}
+.header .header-top-wrap .header-top .top-right-info .search {
+  width: 212px;
+  height: 34px;
+  border-radius: 14px;
+  box-sizing: border-box;
+  background: #3e3e3e;
+  line-height: 34px;
+  margin-right: 30px;
+  margin-left: 20px;
+  margin-top: 4px;
+}
+.header .header-top-wrap .header-top .top-right-info .search .search-icon {
+  display: inline-block;
+  width: 34px;
+  border-radius: 14px 0 0 14px;
+  text-align: center;
+  color: #fff;
+}
+.header .header-top-wrap .header-top .top-right-info .search input {
+  background: #3e3e3e;
+  color: #ccc;
+  font-size: 12px;
+}
+.header .header-top-wrap .header-top .top-right-info .language .language-icons {
+  height: 100%;
+  display: inline-block;
+  color: #fff;
+}
+.header .header-top-wrap .header-top .top-right-info .language .language-icons:hover {
+  color: orange;
+}
+.header .header-top-wrap .header-top .top-right-info .language .language-icons span {
+  display: inline-block;
+  margin: 0 2px;
+}
+.header .nav-wrap {
+  *zoom: 1;
+  max-width: 1200px;
+  height: 112px;
+  margin: 0 auto;
+  line-height: 112px;
+}
+.header .nav-wrap:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header .nav-wrap .logo {
+  width: 252px;
+  padding-top: 24px;
+  float: left;
+  vertical-align: middle;
+}
+.header .nav-wrap #menu {
+  float: right;
+  height: 100%;
+  line-height: 112px;
+  display: flex;
+  flex-direction: row;
+}
+.header .nav-wrap #menu a {
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #000;
+}
+.header .nav-wrap #menu a:hover {
+  background: #ccc;
+}
