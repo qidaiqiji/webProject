@@ -63,11 +63,11 @@ main #slider .arrow {
   margin-top: -36px;
 }
 main #slider .left {
-  background: url(../../img/left-arrow.png) center center no-repeat rgba(255, 255, 255, 0.6);
+  background: url(../img/left-arrow.png) center center no-repeat rgba(255, 255, 255, 0.6);
   left: 0;
 }
 main #slider .right {
-  background: url(../../img/right-arrow.png) center center no-repeat rgba(255, 255, 255, 0.6);
+  background: url(../img/right-arrow.png) center center no-repeat rgba(255, 255, 255, 0.6);
   right: 0;
 }
 main #slider img {
@@ -271,18 +271,18 @@ main .solutions .solution-wrap .img-show .arrow {
   z-index: 999;
 }
 main .solutions .solution-wrap .img-show #left {
-  background: url(../../img/left-arrow.png) center center no-repeat rgba(255, 255, 255, 0.8);
+  background: url(../img/left-arrow.png) center center no-repeat rgba(255, 255, 255, 0.8);
   left: 0;
 }
 main .solutions .solution-wrap .img-show #right {
-  background: url(../../img/right-arrow.png) center center no-repeat rgba(255, 255, 255, 0.8);
+  background: url(../img/right-arrow.png) center center no-repeat rgba(255, 255, 255, 0.8);
   right: 0;
 }
 main .cases {
   width: 100%;
   height: 670px;
   padding-top: 30px;
-  background: url(../../img/case-bg.jpg) 0 0 no-repeat;
+  background: url(../img/case-bg.jpg) 0 0 no-repeat;
   box-sizing: border-box;
 }
 main .cases .case-wrap {

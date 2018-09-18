@@ -1,5 +1,5 @@
-@import url("css/assets/font.css");
-@import url("css/assets/home.css");
+@import url("css/font.css");
+@import url("css/home.css");
 /* 设置清除浮动的公共样式 */
 .clearFix {
   *zoom: 1;
