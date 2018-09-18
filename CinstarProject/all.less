@@ -1,0 +1,129 @@
+@import url("./css/font.css");
+@import url("./css/home.css");
+
+/* 设置清除浮动的公共样式 */
+.clearFix{
+	*zoom:1;
+	&:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+.header{
+	width: 100%;
+	background: #fff;
+	.header-top-wrap{
+		background: #000;
+		.header-top{
+			.clearFix;
+			max-width: 1200px;
+			margin: 0 auto;
+			height: 42px;
+			line-height: 42px;
+			color:#fff;
+			font-family: "Arial";
+			font-size: 14px;
+			.top-left-info{
+				width: 400px;
+				float: left;
+				.mail{
+					display: inline-block;
+					margin-left: 30px;
+					color:#fff;
+				}
+			}
+			.top-right-info{
+				float: right;
+				.clearFix;
+				div{
+					float: left;
+				}
+				.icons{
+					.icon{
+						display: inline-block;
+						margin-right: 24px;
+						font-size: 16px;
+						color:#565656;
+						&:hover{
+							color:rgb(255,144,0);
+						}
+					}
+				}
+				.search{
+					width: 212px;
+					height: 34px;
+					border-radius: 14px;
+					box-sizing: border-box;
+					background: rgb(62,62,62);
+					line-height: 34px;
+					margin-right: 30px;
+					margin-left: 20px;
+					margin-top: 4px;
+					.search-icon{
+						display: inline-block;
+						width: 34px;
+						border-radius: 14px 0 0 14px;
+						text-align: center;
+						color:#fff;
+					}
+					input{
+						background: rgb(62,62,62);
+						color:#ccc;
+						font-size: 12px;
+					}
+				}
+				.language{
+					.language-icons{
+						height: 100%;
+						display: inline-block;
+						color:#fff;
+						&:hover{
+							color: orange;
+						}
+						span{
+							display: inline-block;
+							margin: 0 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.nav-wrap{
+		.clearFix;
+		max-width: 1200px;
+		height: 112px;
+		line-height: 112px;
+		margin: 0 auto;
+		line-height: 112px;
+		.logo{
+			width: 252px;
+			padding-top: 24px;
+			float: left;
+			vertical-align: middle;
+		}
+		#menu{
+			float: right;
+			height: 100%;
+			line-height: 112px;
+			display: flex;
+			flex-direction: row
+		}
+		#menu a{
+			display: inline-block;
+			padding: 0 15px;
+			font-size: 18px;
+			color:#000;
+			&:hover{
+				background: #ccc;
+			}
+			
+		}
+	}
+}
+	
